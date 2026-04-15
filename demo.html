@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <title>基于大模型的共享单车潮汐调度决策系统</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="controls" class="hidden">
+      <div id="controlsHeader">
+        <div class="header-left">
+          <div class="ai-badge">AI</div>
+          <div class="header-text">
+            <div class="header-title">GeoAI 调度助手</div>
+            <div class="header-subtitle">输入自然语言，快速筛选调度重点</div>
+          </div>
+        </div>
+        <button class="icon-btn" id="closeAiPanel" type="button">×</button>
+      </div>
+
+      <input
+        type="text"
+        id="aiInput"
+        placeholder="例如：查找早高峰严重缺车的区域"
+      />
+      <button onclick="runAIQuery()" type="button">发送调度指令</button>
+
+      <div id="aiStatus"></div>
+
+      <select id="timeSelect" onchange="updateMap()">
+        <option value="morning">早高峰 (07:00 - 09:00)</option>
+        <option value="evening">晚高峰 (17:00 - 19:00)</option>
+      </select>
+
+      <div class="legend">
+        <div class="legend-item">
+          <div class="dot red"></div>
+          车辆净流出 (缺车报警)
+        </div>
+        <div class="legend-item">
+          <div class="dot blue"></div>
+          车辆净流入 (爆仓预警)
+        </div>
+      </div>
+    </div>
+
+    <button id="aiFab" class="ai-fab" type="button">✦</button>
+
+    <div id="map"></div>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

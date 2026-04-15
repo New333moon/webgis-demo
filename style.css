@@ -1,0 +1,258 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "San Francisco", "Helvetica Neue",
+    Arial, sans-serif;
+  background: linear-gradient(180deg, #f5f5f7, #e5e7eb);
+}
+
+#map {
+  height: 100vh;
+  width: 100%;
+}
+
+/* 现代化的悬浮控制面板 */
+#controls {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 340px;
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 22px;
+  padding: 20px;
+  z-index: 1200;
+  color: #1d1d1f;
+  box-shadow: 0 18px 50px rgba(15, 23, 42, 0.18);
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease,
+    visibility 0.25s ease;
+}
+
+#controls:hover {
+  transform: translateY(-2px);
+}
+
+#controls.hidden {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px) scale(0.98);
+  pointer-events: none;
+}
+
+#controlsHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ai-badge {
+  width: 34px;
+  height: 34px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #007aff, #5ac8fa);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 700;
+  box-shadow: 0 8px 20px rgba(0, 122, 255, 0.25);
+}
+
+.header-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.header-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1d1d1f;
+}
+
+.header-subtitle {
+  font-size: 12px;
+  color: #6e6e73;
+}
+
+.icon-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0, 0, 0, 0.06);
+  color: #1d1d1f;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.icon-btn:hover {
+  background: rgba(0, 0, 0, 0.1);
+  transform: scale(1.04);
+}
+
+.icon-btn:active {
+  transform: scale(0.96);
+}
+
+.ai-fab {
+  position: absolute;
+  right: 24px;
+  bottom: 28px;
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  border: none;
+  background: linear-gradient(135deg, #007aff, #5ac8fa);
+  color: white;
+  font-size: 28px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 16px 36px rgba(0, 122, 255, 0.32);
+  cursor: pointer;
+  z-index: 1100;
+  transition: all 0.25s ease;
+}
+
+.ai-fab:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 20px 40px rgba(0, 122, 255, 0.38);
+}
+
+.ai-fab:active {
+  transform: scale(0.96);
+}
+
+.ai-fab.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: scale(0.9);
+}
+
+h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1d1d1f;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+input[type="text"] {
+  width: calc(100% - 24px);
+  padding: 10px;
+  margin-bottom: 10px;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: #1d1d1f;
+  border-radius: 10px;
+  outline: none;
+}
+
+input[type="text"]:focus {
+  border-color: #007aff;
+  box-shadow: 0 0 0 2px rgba(0, 122, 255, 0.2);
+}
+
+button {
+  width: 100%;
+  padding: 11px 14px;
+  background: #007aff;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+button:hover {
+  background: #0066d6;
+  transform: translateY(-1px);
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+select {
+  width: 100%;
+  padding: 10px 12px;
+  margin-top: 15px;
+  background: rgba(255, 255, 255, 0.82);
+  color: #1d1d1f;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  outline: none;
+}
+
+/* AI 思考动画区域 */
+#aiStatus {
+  margin-top: 15px;
+  font-size: 13px;
+  color: #34c759;
+  min-height: 20px;
+}
+
+/* 图例 */
+.legend {
+  margin-top: 20px;
+  font-size: 12px;
+  color: #3a3a3c;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.dot.red {
+  background-color: #ff3b30;
+}
+
+.dot.blue {
+  background-color: #007aff;
+}
+
+/* OD流动画效果（发光+流动） */
+.flow-line {
+  stroke-dasharray: 10;
+  animation: dash 1.5s linear infinite;
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: -20;
+  }
+}
